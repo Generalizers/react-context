@@ -1,0 +1,16 @@
+{
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "trailingComma": "all",
+  "importOrder": [
+    "^react?/(.*)$",
+    "^components/?(.*)$",
+    "^interfaces/?(.*)$",
+    "^utils?/(.*)$",
+    "^(scss|@material-ui|@date-io)/?(.*)$",
+    "^(assets)/(.*)$",
+    "^\\./.*"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

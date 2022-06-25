@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "eamodio.gitlens"
+  ]
+}
