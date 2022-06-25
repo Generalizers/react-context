@@ -1,27 +1,27 @@
-import { UserProvider } from '../../shared/contexts';
+import { UserConsumer, UserProvider } from '../../shared/contexts';
 import { User } from '../User';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 
 export const App: FunctionComponent = () => {
   return (
-    <div>
-      <div>
-        <h1>Default Context value : </h1>
-        <User />
-      </div>
-      <div>
-        <h1>Overriden value with own state : </h1>
-        <UserProvider>
-          <User />
-          <User />
-          <div>
-            <UserProvider>
-              <h1>Inner Overriden state with own state : </h1>
-              <User />
-            </UserProvider>
-          </div>
-        </UserProvider>
-      </div>
-    </div>
+    <UserProvider>
+      {/* The default value is default context value */}
+      {/* The state relies in the Provider and is mutable */}
+      <UserConsumer>
+        {([user, setUser]) => {
+          useEffect(() => {
+            setTimeout(() => {
+              setUser({ ...user, age: user.age + 1 });
+            }, 1000);
+          }, [user.age]);
+
+          return (
+            <div>
+              {user.name} - {user.age} years old
+            </div>
+          );
+        }}
+      </UserConsumer>
+    </UserProvider>
   );
 };

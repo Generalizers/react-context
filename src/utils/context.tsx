@@ -16,7 +16,9 @@ type ContextType<T> = [T, Dispatch<SetStateAction<T>>];
 interface ContextReturn<T> {
   useHook: () => ContextType<T>;
   Provider: FunctionComponent<PropsWithChildren>;
-  Consumer: Consumer<ContextType<T>>;
+  Consumer: FunctionComponent<{
+    children: (value: ContextType<T>) => JSX.Element;
+  }>;
 }
 
 export const contextGenerator = <T,>(
@@ -39,6 +41,8 @@ export const contextGenerator = <T,>(
 
       return <ctx.Provider value={state}>{children}</ctx.Provider>;
     },
-    Consumer: ctx.Consumer,
+    Consumer: ({ children }) => {
+      return children(useContext(ctx));
+    },
   };
 };
