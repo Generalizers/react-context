@@ -10,30 +10,33 @@
     "serve": "webpack serve --config ./webpack/webpack.dev.js --open",
     "test": "jest a --watch",
     "lib": "tsconfig-replace-paths --project tsconfig.json && webpack --config ./webpack/webpack.lib.js",
-    "lib:publish": "npm run lib && npm publish",
     "patch": "npm version --no-git-tag-version patch",
     "minor": "npm version --no-git-tag-version minor",
     "major": "npm version --no-git-tag-version major",
     "amend": "npm run lib && git add . && git commit --amend && git push -f",
-    "postversion": "npm run lib && git add . && git commit && git tag v$(npx -c 'node -p \"process.env.npm_package_version\"') && git push && git push --tags",
-    "update-template": "./bin/update-template.sh"
+    "postversion": "git add . && git commit && git push"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Generalizers/react-dev-template.git"
+    "url": "git+https://github.com/Generalizers/react-context.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "template",
     "react",
     "webpack",
-    "lib"
+    "lib",
+    "context",
+    "react-context"
   ],
   "author": "Alan Blanchet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Generalizers/react-dev-template/issues"
+    "url": "https://github.com/Generalizers/react-context/issues"
   },
-  "homepage": "https://github.com/Generalizers/react-dev-template#readme",
+  "homepage": "https://github.com/Generalizers/react-context#readme",
   "files": [
     "lib/"
   ],
