@@ -4,7 +4,7 @@ import { FunctionComponent, useEffect } from 'react';
 
 export const App: FunctionComponent = () => {
   return (
-    <UserProvider>
+    <UserProvider value={{ age: 1, name: 'Kevin' }}>
       {/* The default value is default context value */}
       {/* The state relies in the Provider and is mutable */}
       <UserConsumer>

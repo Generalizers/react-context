@@ -13,9 +13,14 @@ import { SetOutsideOfProviderError } from './errors/SetOutsideOfProviderError';
 
 type ContextType<T> = [T, Dispatch<SetStateAction<T>>];
 
+export interface ProviderProps<T> {
+  children?: any;
+  value?: T;
+}
+
 interface ContextReturn<T> {
   useHook: () => ContextType<T>;
-  Provider: FunctionComponent<PropsWithChildren>;
+  Provider: (props: ProviderProps<T>) => JSX.Element;
   Consumer: FunctionComponent<{
     children: (value: ContextType<T>) => JSX.Element;
   }>;
@@ -36,13 +41,11 @@ export const contextGenerator = <T,>(
 
   return {
     useHook: () => useContext(ctx),
-    Provider: ({ children }) => {
-      const state = useState(useContext(ctx)[0]);
-
-      return <ctx.Provider value={state}>{children}</ctx.Provider>;
-    },
-    Consumer: ({ children }) => {
-      return children(useContext(ctx));
-    },
+    Provider: ({ children, value }) => (
+      <ctx.Provider value={useState(value ?? useContext(ctx)[0])}>
+        {children}
+      </ctx.Provider>
+    ),
+    Consumer: ({ children }) => children(useContext(ctx)),
   };
 };
