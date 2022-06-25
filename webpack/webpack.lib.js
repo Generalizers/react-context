@@ -11,7 +11,7 @@ module.exports = merge(
       path: path.resolve(__dirname, '../', 'lib'),
       publicPath: '/',
       library: {
-        name: 'react-dev-template',
+        name: 'react-context',
         type: 'umd',
       },
       filename: 'module.js',

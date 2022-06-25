@@ -1,3 +1,3 @@
-type LIB = 'LIB';
+import { contextGenerator } from './utils/context';
 
-export { LIB };
+export { contextGenerator };
