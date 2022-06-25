@@ -1,0 +1,35 @@
+name: "Tag and publish react-context to npm"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: Tag and publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup node
+        uses: actions/setup-node@v3.3.0
+        with:
+          node-version: 17.3.0
+          registry-url: https://registry.npmjs.org
+      - uses: actions/checkout@v3
+      - name: get-npm-version
+        id: version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: tag package
+        id: tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: v${{ steps.version.outputs.current-version }}
+          message: tagging package ${{ steps.version.outputs.current-version }}
+      - name: install node_modules
+        run: npm i
+      - name: generate library
+        run: npm run lib
+      - name: publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
