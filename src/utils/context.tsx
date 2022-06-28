@@ -24,10 +24,10 @@ interface ContextReturn<T, U = T> {
   }>;
 }
 
-export const contextGenerator = <T,>(
+export const contextGenerator = <T, U = T>(
   defaultValue: T,
   name?: string,
-): ContextReturn<T> => {
+): ContextReturn<T, U> => {
   const ctx = createContext<ContextType<T>>([
     defaultValue,
     () => {
