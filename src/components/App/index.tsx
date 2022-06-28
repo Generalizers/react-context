@@ -1,5 +1,4 @@
 import { UserConsumer, UserProvider } from '../../shared/contexts';
-import { User } from '../User';
 import { FunctionComponent, useEffect } from 'react';
 
 export const App: FunctionComponent = () => {

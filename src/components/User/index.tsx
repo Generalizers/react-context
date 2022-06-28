@@ -1,4 +1,4 @@
-import { UserConsumer, useUser } from '../../shared/contexts';
+import { UserConsumer } from '../../shared/contexts';
 import { FunctionComponent } from 'react';
 
 export const User: FunctionComponent = () => {

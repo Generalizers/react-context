@@ -6,5 +6,8 @@
     "**/node_modules": true,
     "**/*lock*": true,
     "**/LICENSE": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
   }
 }

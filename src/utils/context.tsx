@@ -1,8 +1,6 @@
 import {
-  Consumer,
   Dispatch,
   FunctionComponent,
-  PropsWithChildren,
   SetStateAction,
   createContext,
   useContext,
