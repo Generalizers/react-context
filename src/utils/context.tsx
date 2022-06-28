@@ -16,9 +16,9 @@ export interface ProviderProps<T> {
   value?: T;
 }
 
-interface ContextReturn<T> {
+interface ContextReturn<T, U = T> {
   useHook: () => ContextType<T>;
-  Provider: (props: ProviderProps<T>) => JSX.Element;
+  Provider: (props: ProviderProps<U>) => JSX.Element;
   Consumer: FunctionComponent<{
     children: (value: ContextType<T>) => JSX.Element;
   }>;
@@ -40,7 +40,7 @@ export const contextGenerator = <T,>(
   return {
     useHook: () => useContext(ctx),
     Provider: ({ children, value }) => (
-      <ctx.Provider value={useState(value ?? useContext(ctx)[0])}>
+      <ctx.Provider value={useState({ ...useContext(ctx)[0], ...value })}>
         {children}
       </ctx.Provider>
     ),
