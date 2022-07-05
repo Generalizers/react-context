@@ -42,7 +42,7 @@ export const contextGenerator = <T, U = T>(
     Provider: ({ children, value }) => {
       let v = useContext(ctx)[0];
       if (typeof v == 'object') Object.merge(v, value ?? {});
-      else v = value as any;
+      else v = (value as any) ?? v;
       return <ctx.Provider value={useState(v)}>{children}</ctx.Provider>;
     },
     Consumer: ({ children }) => children(useContext(ctx)),
