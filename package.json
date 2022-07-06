@@ -1,6 +1,6 @@
 {
   "name": "@generalizers/react-context",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "./src/module.ts",
   "module": "./lib/module.js",
