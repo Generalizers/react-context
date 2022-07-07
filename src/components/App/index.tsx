@@ -1,26 +1,22 @@
-import { UserConsumer, UserProvider } from '../../shared/contexts';
-import { FunctionComponent, useEffect } from 'react';
+import { ObjectT } from '../ObjectT';
+import { Timeout } from '../Timeout';
+import { FunctionComponent } from 'react';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 
 export const App: FunctionComponent = () => {
   return (
-    <UserProvider value={{ age: 1, name: 'Kevin' }}>
-      {/* The default value is default context value */}
-      {/* The state relies in the Provider and is mutable */}
-      <UserConsumer>
-        {([user, setUser]) => {
-          useEffect(() => {
-            setTimeout(() => {
-              setUser({ ...user, age: user.age + 1 });
-            }, 1000);
-          }, [user.age]);
-
-          return (
-            <div>
-              {user.name} - {user.age} years old
-            </div>
-          );
-        }}
-      </UserConsumer>
-    </UserProvider>
+    <>
+      <nav>
+        <Link to={`object`}>Object</Link>
+        <Link to={`timeout`}>Timeout</Link>
+      </nav>
+      <main>
+        <Routes>
+          <Route path='object' element={<ObjectT />} />
+          <Route path='timeout' element={<Timeout />} />
+          <Route path='*' element={<Navigate to={`object`} />} />
+        </Routes>
+      </main>
+    </>
   );
 };

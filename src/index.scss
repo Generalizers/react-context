@@ -1,0 +1,17 @@
+body {
+  background-color: #222;
+  color: white;
+  font-family: Arial;
+}
+
+a {
+  color: red;
+}
+
+nav {
+  display: flex;
+  margin: 5px;
+  > * {
+    margin: 5px;
+  }
+}
