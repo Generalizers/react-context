@@ -42,7 +42,7 @@ export const contextGenerator = <T, U = T>(
     useHook: () => useContext(ctx),
     Provider: ({ children, value }) => {
       let v = useContext(ctx)[0];
-      if (typeof v == 'object') Object.merge(v, value ?? {});
+      if (typeof v == 'object') v = Object.merge(v, value ?? {});
       else v = (value as any) ?? v;
       return <ctx.Provider value={useState(v)}>{children}</ctx.Provider>;
     },
