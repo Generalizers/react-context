@@ -1,6 +1,6 @@
 {
   "name": "@generalizers/react-context",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "./lib/module.js",
   "module": "./lib/module.js",
@@ -69,13 +69,13 @@
     "webpack-dev-server": "^4.8.1",
     "webpack-merge": "^5.8.0"
   },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
   "jest": {
     "roots": [
       "<rootDir>/src"
     ],
     "testRegex": ".*.test.ts"
-  },
-  "dependencies": {
-    "react": "^18.2.0"
   }
 }
